@@ -9,16 +9,17 @@ import NotFound from '../../pages/NotFound/NotFound';
 import appRoutes from '../../../routing/routes';
 import { refreshUser } from '../../../storage/operations/authThunk';
 import {
-    errorUserSelector,
+    errorSelector,
     tokenSelector,
 } from '../../../storage/selectors/authSelectors';
 import { Modal } from '../../ui/Modal';
+import NotFoundContainer from '../../containers/NotFoundContainer/NotFoundContainer';
 
 const cn = classNames.bind(styles);
 
 function App() {
     const token = useSelector(tokenSelector);
-    const error = useSelector(errorUserSelector);
+    const error = useSelector(errorSelector);
     const dispatch = useDispatch();
 
     useEffect(() => {
@@ -46,7 +47,11 @@ function App() {
                                 ))}
                         </Route>
                     ))}
-                    <Route path="*" element={<NotFound />} />
+                    <Route path="*" element={
+                        <NotFoundContainer>
+                            <NotFound />
+                        </NotFoundContainer>
+                    } />
                 </Routes>
             </Suspense>
             {error && (
