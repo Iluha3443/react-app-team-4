@@ -12,7 +12,7 @@ import { logout } from '../../../../storage/operations/authThunk';
 const cn = classNames.bind(styles);
 
 const UserCard = () => {
-    const [avatar, setAvatar] = useState(``);
+    // const [avatar, setAvatar] = useState(``);
     const userData = useSelector(userSelector);
     const dispatch = useDispatch();
 

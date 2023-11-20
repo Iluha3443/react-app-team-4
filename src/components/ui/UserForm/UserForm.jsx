@@ -61,9 +61,9 @@ const UserForm = () => {
       >
         {({ errors, touched, values }) => (
           <Form>
+            <label className={cn('label')}>Basic info</label>
             <div className={cn('basic__infoNameContainer')}>
-              <div className={cn('basic__infoName')}>
-                <label>Basic info</label>
+              <div className={cn('basic__infoMailName')}>
                 <Field name="name" className={cn(
                   'input',
                   { error: errors.name && touched.name },
@@ -71,88 +71,221 @@ const UserForm = () => {
                 )}
                 />
                 {errors.name && touched.name ? (
-                    <div
-                        className={cn({
-                            errorLabel:
-                                errors.name && touched.name,
-                        })}
-                    >
-                        <Icon
-                            iconId="icon-checkbox-circle"
-                            w={16}
-                            h={16}
-                            customStyles={{
-                                marginRight: 4,
-                                fill: '#D80027',
-                            }}
-                        />
-                        <span>{errors.name}</span>
-                    </div>
+                  <div
+                    className={cn({
+                      errorLabelName:
+                        errors.name && touched.name,
+                    })}
+                  >
+                    <Icon
+                      iconId="icon-checkbox-circle"
+                      w={16}
+                      h={16}
+                      customStyles={{
+                        marginRight: 4,
+                        fill: '#D80027',
+                      }}
+                    />
+                    <span>{errors.name}</span>
+                  </div>
                 ) : null}
                 {!errors.name && touched.name ? (
-                    <div
-                        className={cn({
-                            successLabel:
-                                !errors.name && touched.name,
-                        })}
-                    >
-                        <Icon
-                            iconId="icon-checkbox-circle"
-                            w={16}
-                            h={16}
-                            customStyles={{
-                                marginRight: 4,
-                                fill: '#3CBF61',
-                            }}
-                        />
-                        <span>{`Success name`}</span>
-                    </div>
+                  <div
+                    className={cn({
+                      successLabelName:
+                        !errors.name && touched.name,
+                    })}
+                  >
+                    <Icon
+                      iconId="icon-checkbox-circle"
+                      w={16}
+                      h={16}
+                      customStyles={{
+                        marginRight: 4,
+                        fill: '#3CBF61',
+                      }}
+                    />
+                    <span>{`Success name`}</span>
+                  </div>
                 ) : null
                 }
               </div>
-          
-              <div className={cn('basic__infoMail')}>
+              <div className={cn('basic__infoMailName')}>
                 <Field type="email" name="email" readOnly placeholder={`${user.email}`} className={cn(
                   'input', 'disabled'
                 )}
-                  />
+                />
               </div>
             </div>
-         
+           
             <div className={cn('basic__infoInputContainer')}>
-              <div className={cn('basic__info')}>
+              <div>
                 <label>Height</label>
-                <Field type="number" name="height" component={Input} />
-                <ErrorMessage name="height" component="div" />
+                <div className={cn('basic__info')}>
+                  <Field type="number" name="height" className={cn(
+                    'input',
+                    { error: errors.height && touched.height },
+                    { success: !errors.height && touched.height },
+                  )} />
+                  {errors.height && touched.height ? (
+                    <div
+                      className={cn({
+                        errorLabel:
+                          errors.height && touched.height,
+                      })}
+                    >
+                      <Icon
+                        iconId="icon-checkbox-circle"
+                        w={16}
+                        h={16}
+                        customStyles={{
+                          marginRight: 4,
+                          fill: '#D80027',
+                        }}
+                      />
+                      <span>{errors.height}</span>
+                    </div>
+                  ) : null}
+                  {!errors.height && touched.height ? (
+                    <div
+                      className={cn({
+                        successLabel:
+                          !errors.height && touched.height,
+                      })}
+                    >
+                      <Icon
+                        iconId="icon-checkbox-circle"
+                        w={16}
+                        h={16}
+                        customStyles={{
+                          marginRight: 4,
+                          fill: '#3CBF61',
+                        }}
+                      />
+                      <span>{`Success height`}</span>
+                    </div>
+                  ) : null
+                  }
+                </div>
               </div>
 
-              <div className={cn('basic__info')}>
-                <label>Current Weight</label>
-                <Field type="number" name="currentWeight" component={Input} />
-                <ErrorMessage name="currentWeight" component="div" />
+              <div>
+                <label>currentWeight</label>
+                <div className={cn('basic__info')}>
+                
+                  <Field type="number" name="currentWeight" className={cn(
+                    'input',
+                    { error: errors.currentWeight && touched.currentWeight },
+                    { success: !errors.currentWeight && touched.currentWeight },
+                  )} />
+                  {errors.currentWeight && touched.currentWeight ? (
+                    <div
+                      className={cn({
+                        errorLabel:
+                          errors.currentWeight && touched.currentWeight,
+                      })}
+                    >
+                      <Icon
+                        iconId="icon-checkbox-circle"
+                        w={16}
+                        h={16}
+                        customStyles={{
+                          marginRight: 4,
+                          fill: '#D80027',
+                        }}
+                      />
+                      <span>{errors.currentWeight}</span>
+                    </div>
+                  ) : null}
+                  {!errors.currentWeight && touched.currentWeight ? (
+                    <div
+                      className={cn({
+                        successLabel:
+                          !errors.currentWeight && touched.currentWeight,
+                      })}
+                    >
+                      <Icon
+                        iconId="icon-checkbox-circle"
+                        w={16}
+                        h={16}
+                        customStyles={{
+                          marginRight: 4,
+                          fill: '#3CBF61',
+                        }}
+                      />
+                      <span>{`Success currentWeight`}</span>
+                    </div>
+                  ) : null
+                  }
+                </div>
               </div>
-
-              <div className={cn('basic__info')}>
+              
+              <div>
                 <label>Desired Weight</label>
-                <Field type="number" name="desiredWeight" component={Input} />
-                <ErrorMessage name="desiredWeight" component="div" />
+                <div className={cn('basic__info')}>
+                  <Field type="number" name="desiredWeight" className={cn(
+                    'input',
+                    { error: errors.desiredWeight && touched.desiredWeight },
+                    { success: !errors.desiredWeight && touched.desiredWeight },
+                  )} />
+                  {errors.desiredWeight && touched.desiredWeight ? (
+                    <div
+                      className={cn({
+                        errorLabel:
+                          errors.desiredWeight && touched.desiredWeight,
+                      })}
+                    >
+                      <Icon
+                        iconId="icon-checkbox-circle"
+                        w={16}
+                        h={16}
+                        customStyles={{
+                          marginRight: 4,
+                          fill: '#D80027',
+                        }}
+                      />
+                      <span>{errors.desiredWeight}</span>
+                    </div>
+                  ) : null}
+                  {!errors.desiredWeight && touched.desiredWeight ? (
+                    <div
+                      className={cn({
+                        successLabel:
+                          !errors.desiredWeight && touched.desiredWeight,
+                      })}
+                    >
+                      <Icon
+                        iconId="icon-checkbox-circle"
+                        w={16}
+                        h={16}
+                        customStyles={{
+                          marginRight: 4,
+                          fill: '#3CBF61',
+                        }}
+                      />
+                      <span>{`Success desiredWeight`}</span>
+                    </div>
+                  ) : null
+                  }
+                </div>
               </div>
 
               <div className={cn('basic__info')}>
                 <div className={cn('basic__calendary')}>
                   <Field type="date" name="birthday" component={Input} />
                 </div>
-            
               </div>
             </div>
             <div className={cn('blood__containerParent')}>
               <div>
                 <label className={cn('label__blood')}>Blood</label>
                 <div className={cn('blood__container')} >
+
                   <label>
                     <Field type="radio" id="blood1" name="blood" value="1" />
                     <p className={cn('circle')}>1</p>
                   </label>
+
                   <label htmlFor="blood2">
                     <Field type="radio" id="blood2" name="blood" value="2" />
                     <p className={cn('circle')}>2</p>
@@ -216,5 +349,3 @@ const UserForm = () => {
 };
 
 export {UserForm};
-
-          
